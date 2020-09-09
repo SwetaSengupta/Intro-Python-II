@@ -67,16 +67,15 @@ while user_input != 'q' and user_input != "quit":
     if no_noun:
         if user_input in ['n','s','e','w']:
             # If the user enters a cardinal direction, attempt to move to the room there.
-            if user_input in ['n','s','e','w']:
-               player.move(user_input)
+            player.move(user_input)
             
-            elif user_input == 'i' or user_input == 'inventory':
+        elif user_input == 'i' or user_input == 'inventory':
                 player.list_inventory()
-            elif user_input == 'l' or user_input == 'look':
+        elif user_input == 'l' or user_input == 'look':
                 player.location.list_items()
-            elif user_input == 'q' or user_input == "quit":
+        elif user_input == 'q' or user_input == "quit":
                 print("Thank you for playing!")
-            else:
+        else:
                print(bad_input)
     else:
         if verb == 'get':
