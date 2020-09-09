@@ -67,32 +67,8 @@ while user_input != 'q' and user_input != "quit":
     if no_noun:
         if user_input in ['n','s','e','w']:
             # If the user enters a cardinal direction, attempt to move to the room there.
-
-            if user_input == 'n':
-              print("\nWalking north...\n")
-              if player.current_room.n_to is None:
-                 print("****There is no room to the North of you, select different direction.****")
-              else:
-                 player.current_room = player.current_room.n_to
-                
-            elif user_input == 's':
-              print("\nWalking south...\n")
-              if player.current_room.s_to is None:
-                 print("****There is no room to the South of you. Select a different direction.****")
-              else:
-                player.current_room = player.current_room.s_to
-            elif user_input == 'e':
-              print("\nWalking east...\n")
-              if player.current_room.e_to is None:
-                print("****There is no room to the East of you. Select a different direction.****")
-              else:
-                player.current_room = player.current_room.e_to
-            elif user_input == 'w':
-              print("\nWalking west...\n")
-              if player.current_room.w_to is None:
-                 print("****There is no room to the West of you. Select a different direction.****")
-              else:
-                player.current_room = player.current_room.w_to
+            if user_input in ['n','s','e','w']:
+               player.move(user_input)
             
             elif user_input == 'i' or user_input == 'inventory':
                 player.list_inventory()
