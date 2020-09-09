@@ -41,6 +41,10 @@ print("Welcome, adventurer,")
 player_name = input("Pray tell, what is your name?\n")
 # Make a new player object that is currently in the 'outside' room.
 player = Player(player_name, room['outside'])
+print(f"Welcome brave {player.name}!\nWelcome to the land of Ardamesia, \
+a land of mystery and intregue.\nAre you ready to get started?\n\
+Your adventure awaits!\n")
+
 # Write a loop that:
 #
 # * Prints the current room name
@@ -67,12 +71,12 @@ while user_input != 'q' and user_input != "quit":
     if no_noun:
         if user_input in ['n','s','e','w']:
             # If the user enters a cardinal direction, attempt to move to the room there.
-            player.move(user_input)
+            player.move(user_input) # move function is from in Player class, it has direction and location information
             
         elif user_input == 'i' or user_input == 'inventory':
-                player.list_inventory()
+                player.list_inventory() # list_inventory function is from Player class
         elif user_input == 'l' or user_input == 'look':
-                player.location.list_items()
+                player.location.list_items() # list_items function is from Player class
         elif user_input == 'q' or user_input == "quit":
                 print("Thank you for playing!")
         else:
