@@ -65,18 +65,19 @@ while user_input != 'q' and user_input != "quit":
     if " " in user_input:
         verb, noun = user_input.split(" ", 1)
         no_noun = False
+
     else:
         no_noun = True
 
     if no_noun:
         if user_input in ['n','s','e','w']:
             # If the user enters a cardinal direction, attempt to move to the room there.
-            player.move(user_input) # move function is from in Player class, it has direction and location information
+            player.move(user_input) # move method is from in Player class, it has direction and location information
             
         elif user_input == 'i' or user_input == 'inventory':
-                player.list_inventory() # list_inventory function is from Player class
+                player.list_inventory() # list_inventory method is from Player class
         elif user_input == 'l' or user_input == 'look':
-                player.location.list_items() # list_items function is from Player class
+                player.location.list_items() # list_items method is from Player class
         elif user_input == 'q' or user_input == "quit":
                 print("Thank you for playing!")
         else:
