@@ -39,7 +39,7 @@ class Player:
         if selection != None:
             self.inventory.append(selection)
             self.location.get_item(selection)
-            selection.on_take()
+            selection.on_take() # on_take a method from Item class
         else:
             print(f"You look around but there is no {item} in sight")
 
@@ -61,6 +61,6 @@ class Player:
         if selection != None:
             self.inventory.remove(selection)
             self.location.drop_item(selection)
-            selection.on_drop()
+            selection.on_drop() # on_drop a method from Item class
         else:
             print(f"You do not currently have {item} in your inventory.")

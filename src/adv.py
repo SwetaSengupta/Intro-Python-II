@@ -22,6 +22,24 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+#Declare all the items
+
+items = {
+    'sword': Item("RustySword", """A rusty sword lies here."""),
+
+    'coin': Item("GoldCoin", """There is a small gold coin here. Might be valuable."""),
+
+    'key': Item("key", """A dingy key lies here. Might be useful."""),
+
+    'rations': Item("rations", """Some old military rations are here. Hopefully they haven't expired."""),
+
+    'hookshot': Item("hookshot", """A spring-loaded, trigger-pulled hook attached to
+        lengthy chains. It can can attack enemies at a distance, 
+        retrieve remote items, and attach onto certain surfaces 
+        (like wood) to pull you across large distances."""),
+
+    'chest': Item("chest", """A dusty old chest lies in the corner here.""")
+}
 
 # Link rooms together
 
@@ -72,12 +90,12 @@ while user_input != 'q' and user_input != "quit":
     if no_noun:
         if user_input in ['n','s','e','w']:
             # If the user enters a cardinal direction, attempt to move to the room there.
-            player.move(user_input) # move method is from in Player class, it has direction and location information
+            player.move(user_input) # move method is from  Player class, it has direction and location information
             
         elif user_input == 'i' or user_input == 'inventory':
                 player.list_inventory() # list_inventory method is from Player class
         elif user_input == 'l' or user_input == 'look':
-                player.location.list_items() # list_items method is from Player class
+                player.location.list_items() # list_items method is from Room class
         elif user_input == 'q' or user_input == "quit":
                 print("Thank you for playing!")
         else:
