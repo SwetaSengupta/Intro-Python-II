@@ -52,6 +52,12 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Add items to rooms
+
+room['foyer'].add_item(item['sword'])
+room['treasure'].add_item(item['goose'])
+room['overlook'].add_item(item['lantern'])
+
 #
 # Main
 #
