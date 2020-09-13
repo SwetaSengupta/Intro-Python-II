@@ -12,6 +12,8 @@ class Room:
 
     def __str__(self):
         return f"{self.name}\n{self.description}"
+    
+    
 
     def get_item(self, item):
         self.items.remove(item)

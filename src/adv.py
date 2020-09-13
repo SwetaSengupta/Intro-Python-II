@@ -1,45 +1,47 @@
 from room import Room
 from player import Player
 from item import Item
+# Utility func to clear screen on all platforms
+from utils import clear_terminal
+
+import sys
+
+
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons",
+               [Item("Stick", "It's a stick..."),
+               Item("Rock", "What did you expect, it's a rock.")]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm. """,
+               [Item("Rope", "A length of rope that you found tied to edge of the chasm")]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
-
+to north. The smell of gold permeates the air.""",
+                [Item("Coin", "A single coin of the realm's current currency.")]),
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers.The only exit is to the south. """,
+                 [Item("SmallKey","A key so small it's a wonder you even noticed it, it may unlock something important."),
+                 Item("Cheese","It looks like someone has taken a bite out of it.")]),
 }
 
 #Declare all the items
+# items = {
+#     'goose': Item("a goose", "A goose that lays golden eggs!"),
+    
+#     'sword': Item("a sword", "Don't hold on to the wrong end."),
 
-items = {
-    'sword': Item("RustySword", """A rusty sword lies here."""),
+#     'lantern': Item("a lantern", "Shines light in dark places."),
+# }
 
-    'coin': Item("GoldCoin", """There is a small gold coin here. Might be valuable."""),
-
-    'key': Item("key", """A dingy key lies here. Might be useful."""),
-
-    'rations': Item("rations", """Some old military rations are here. Hopefully they haven't expired."""),
-
-    'hookshot': Item("hookshot", """A spring-loaded, trigger-pulled hook attached to
-        lengthy chains. It can can attack enemies at a distance, 
-        retrieve remote items, and attach onto certain surfaces 
-        (like wood) to pull you across large distances."""),
-
-    'chest': Item("chest", """A dusty old chest lies in the corner here.""")
-}
 
 # Link rooms together
 
@@ -52,15 +54,26 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-# Add items to rooms
 
-room['foyer'].add_item(item['sword'])
-room['treasure'].add_item(item['goose'])
-room['overlook'].add_item(item['lantern'])
 
 #
 # Main
 #
+# Clear screen in preparation for game
+clear_terminal()
+
+print(
+
+"""
+      /| ________________
+O|===|* >________________>
+      \|  Text Adventure
+	       By: Sweta Sengupta
+"""
+)
+
+
+
 print("Welcome, adventurer,")
 player_name = input("Pray tell, what is your name?\n")
 # Make a new player object that is currently in the 'outside' room.
@@ -103,6 +116,7 @@ while user_input != 'q' and user_input != "quit":
         elif user_input == 'l' or user_input == 'look':
                 player.location.list_items() # list_items method is from Room class
         elif user_input == 'q' or user_input == "quit":
+                clear_terminal()
                 print("Thank you for playing!")
         else:
                print(bad_input)
